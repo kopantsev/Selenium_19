@@ -30,33 +30,33 @@ public class Task_10_Firefox {
         WebDriver driver = new FirefoxDriver();
         driver.navigate().to("http://localhost/litecart");
 
-        String name01 = driver.findElement(By.cssSelector("#box-campaigns > div > ul > li > a.link > div.name")).getText();
-        String regPrice01 = driver.findElement(By.cssSelector("#box-campaigns > div > ul > li > a.link > div.price-wrapper > s")).getText();
-        String campPrice01 = driver.findElement(By.cssSelector("#box-campaigns > div > ul > li > a.link > div.price-wrapper > strong")).getText();
-        Color regPriceColor01 = Color.valueOf(driver.findElement(By.cssSelector("#box-campaigns > div > ul > li > a.link > div.price-wrapper > s")).getCssValue("color"));
-        Color campPriceColor01 = Color.valueOf(driver.findElement(By.cssSelector("#box-campaigns > div > ul > li > a.link > div.price-wrapper > strong")).getCssValue("color"));
-        Double campPriceFontSize01 = sizeInPxToDouble(driver.findElement(By.cssSelector("#box-campaigns > div > ul > li > a.link > div.price-wrapper > strong")).getCssValue("font-size"));
-        Double regPriceFontSize01 = sizeInPxToDouble(driver.findElement(By.cssSelector("#box-campaigns > div > ul > li > a.link > div.price-wrapper > s")).getCssValue("font-size"));
+        String name01 = driver.findElement(By.cssSelector("#box-campaigns a.link")).getAttribute("title");
+        String regPrice01 = driver.findElement(By.cssSelector("#box-campaigns s.regular-price")).getText();
+        String campPrice01 = driver.findElement(By.cssSelector("#box-campaigns strong.campaign-price")).getText();
+        Color regPriceColor01 = Color.valueOf(driver.findElement(By.cssSelector("#box-campaigns s")).getCssValue("color"));
+        Color campPriceColor01 = Color.valueOf(driver.findElement(By.cssSelector("#box-campaigns strong")).getCssValue("color"));
+        Double campPriceFontSize01 = sizeInPxToDouble(driver.findElement(By.cssSelector("#box-campaigns strong")).getCssValue("font-size"));
+        Double regPriceFontSize01 = sizeInPxToDouble(driver.findElement(By.cssSelector("#box-campaigns s")).getCssValue("font-size"));
 
-        Assert.assertEquals(driver.findElement(By.cssSelector("#box-campaigns > div > ul > li > a.link > div.price-wrapper > s")).getCssValue("text-decoration-line"), "line-through");
+        Assert.assertEquals(driver.findElement(By.cssSelector("#box-campaigns s")).getCssValue("text-decoration-line"), "line-through");
         Assert.assertTrue(isGrey(regPriceColor01));
-        Assert.assertEquals(driver.findElement(By.cssSelector("#box-campaigns > div > ul > li > a.link > div.price-wrapper > strong")).getCssValue("font-weight"), "900");
+        Assert.assertEquals(driver.findElement(By.cssSelector("#box-campaigns strong")).getCssValue("font-weight"), "900");
         Assert.assertTrue(isRed(campPriceColor01));
         Assert.assertTrue(campPriceFontSize01 > regPriceFontSize01);
 
-        driver.findElement(By.cssSelector("#box-campaigns > div > ul > li")).click();
+        driver.findElement(By.cssSelector("#box-campaigns a.link")).click();
 
-        String name02 = driver.findElement(By.cssSelector("#box-product > div:nth-child(1) > h1")).getText();
-        String regPrice02 = driver.findElement(By.cssSelector("#box-product > div.content > div.information > div.price-wrapper > s")).getText();
-        String campPrice02 = driver.findElement(By.cssSelector("#box-product > div.content > div.information > div.price-wrapper > strong")).getText();
-        Color regPriceColor02 = Color.valueOf(driver.findElement(By.cssSelector("#box-product > div.content > div.information > div.price-wrapper > s")).getCssValue("color"));
-        Color campPriceColor02 = Color.valueOf(driver.findElement(By.cssSelector("#box-product > div.content > div.information > div.price-wrapper > strong")).getCssValue("color"));
-        Double campPriceFontSize02 = sizeInPxToDouble(driver.findElement(By.cssSelector("#box-product > div.content > div.information > div.price-wrapper > strong")).getCssValue("font-size"));
-        Double regPriceFontSize02 = sizeInPxToDouble(driver.findElement(By.cssSelector("#box-product > div.content > div.information > div.price-wrapper > s")).getCssValue("font-size"));
+        String name02 = driver.findElement(By.cssSelector("h1.title")).getText();
+        String regPrice02 = driver.findElement(By.cssSelector("s.regular-price")).getText();
+        String campPrice02 = driver.findElement(By.cssSelector("strong.campaign-price")).getText();
+        Color regPriceColor02 = Color.valueOf(driver.findElement(By.cssSelector("s.regular-price")).getCssValue("color"));
+        Color campPriceColor02 = Color.valueOf(driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("color"));
+        Double campPriceFontSize02 = sizeInPxToDouble(driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-size"));
+        Double regPriceFontSize02 = sizeInPxToDouble(driver.findElement(By.cssSelector("s.regular-price")).getCssValue("font-size"));
 
-        Assert.assertEquals(driver.findElement(By.cssSelector("#box-product > div.content > div.information > div.price-wrapper > s")).getCssValue("text-decoration-line"), "line-through");
+        Assert.assertEquals(driver.findElement(By.cssSelector("s.regular-price")).getCssValue("text-decoration-line"), "line-through");
         Assert.assertTrue(isGrey(regPriceColor02));
-        Assert.assertEquals(driver.findElement(By.cssSelector("#box-product > div.content > div.information > div.price-wrapper > strong")).getCssValue("font-weight"), "700");
+        Assert.assertEquals(driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-weight"), "700");
         Assert.assertTrue(isRed(campPriceColor02));
         Assert.assertTrue(campPriceFontSize02 > regPriceFontSize02);
 
