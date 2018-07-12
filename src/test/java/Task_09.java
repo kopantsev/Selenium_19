@@ -40,7 +40,6 @@ public class Task_09 extends Chrome {
                 driver.navigate().to("http://localhost/litecart/admin/?app=countries&doc=countries");
             }
         }
-
     }
 
     @Test
@@ -68,7 +67,6 @@ public class Task_09 extends Chrome {
                 driver.navigate().to("http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones");
             }
         }
-        driver.close();
     }
 }
 
